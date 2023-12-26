@@ -1,9 +1,16 @@
 import "./App.css";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Highlights from "./components/Highlights";
+import NavBar from "./components/NavBar";
+import Testimonials from "./components/Testimonials";
 
 function App() {
   return (
     <>
       <head>
+        <title>Little Lemon Restaurant</title>
         <meta name="og:title" content="Little Lemon Restaurant" />
         <meta
           name="og:description"
@@ -15,8 +22,14 @@ function App() {
         />{" "}
       </head>
 
-      <main></main>
-      <footer></footer>
+      <body>
+        <NavBar />
+        <Hero />
+        <Highlights />
+        <Testimonials />
+        <About />
+        <Footer />
+      </body>
     </>
   );
 }
