@@ -5,13 +5,13 @@ export default function NavBar() {
   return (
     <nav>
       <LogoDark />
-      <div class="links">
-        <a href="">Specials</a>
+      <Routes class="links">
+        <Route href="">Specials</Route>
 
-        <a href="">Specials</a>
+        <Route href="">Specials</Route>
 
-        <a href="">Specials</a>
-      </div>
+        <Route href="">Specials</Route>
+      </Routes>
     </nav>
   );
 }
