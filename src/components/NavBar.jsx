@@ -1,17 +1,24 @@
 import React from "react";
 import LogoDark from "./lib/LogoDark";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <nav>
-      <LogoDark />
-      <Routes class="links">
-        <Route href="">Specials</Route>
-
-        <Route href="">Specials</Route>
-
-        <Route href="">Specials</Route>
-      </Routes>
+      <Link to="/">
+        <LogoDark />
+      </Link>
+      <nav class="links">
+        <Link class="link" to="/">
+          Home
+        </Link>
+        <Link class="link" to="/Booking">
+          Booking
+        </Link>
+        <Link class="link" to="/Specials">
+          Specials
+        </Link>
+      </nav>
     </nav>
   );
 }
