@@ -1,4 +1,8 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import "@material/web/button/filled-button.js";
+import "@material/web/checkbox/checkbox.js";
+import "@material/web/field/outlined-field.js";
 
 export default function BookingForm({
   date,
@@ -20,6 +24,13 @@ export default function BookingForm({
   const handleTimeChange = (event) => setTime(event.target.value);
   const handleGuestsChange = (event) => setGuests(event.target.value);
   const handleOccasionChange = (event) => setOccasion(event.target.value);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid = date && time && guests > 0 && occasion;
+    setIsFormValid(isValid);
+  }, [date, time, guests, occasion]);
 
   return (
     <>
@@ -46,7 +57,7 @@ export default function BookingForm({
             </select>
 
             <label htmlFor="guests">Number of guests</label>
-            <input
+            <md-outlined-text-field
               type="number"
               placeholder="1"
               min="1"
@@ -54,6 +65,7 @@ export default function BookingForm({
               id="guests"
               value={guests}
               onChange={handleGuestsChange}
+              required
             />
 
             <label htmlFor="occasion">Occasion</label>
@@ -67,10 +79,12 @@ export default function BookingForm({
               <option value="Anniversary">Anniversary</option>
             </select>
 
-            <input type="submit" value="Make Your reservation" />
+            <input type="submit" disabled={!isFormValid}>
+              Next
+            </input>
           </form>
         </div>
-        <div className="col-right">Restaurant select</div>
+        <div className="booking-col">Restaurant select</div>
       </div>
     </>
   );

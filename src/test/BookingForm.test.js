@@ -67,6 +67,12 @@ describe("BookingForm", () => {
       />
     );
 
+    const guestsInput = screen.getByLabelText(/number of guests/i);
+    expect(guestsInput).toHaveAttribute("type", "number");
+    expect(guestsInput).toHaveAttribute("min", "1");
+    expect(guestsInput).toHaveAttribute("max", "10");
+    expect(guestsInput).toBeRequired();
+
     // Simulate user interactions
     fireEvent.change(screen.getByLabelText(/choose date/i), {
       target: { value: "2023-12-01" },
@@ -91,5 +97,87 @@ describe("BookingForm", () => {
     expect(mockSetTime).toHaveBeenCalledWith("18:00");
     expect(mockSetGuests).toHaveBeenCalledWith(4);
     expect(mockSetOccasion).toHaveBeenCalledWith("Birthday");
+  });
+
+  test("enables submit button when form is valid", () => {
+    render(<BookingForm /* props */ />);
+
+    // Simulate valid inputs
+    fireEvent.change(screen.getByLabelText(/choose date/i), {
+      target: { value: "2023-12-01" },
+    });
+    fireEvent.change(screen.getByLabelText(/choose time/i), {
+      target: { value: "18:00" },
+    });
+    fireEvent.change(screen.getByLabelText(/number of guests/i), {
+      target: { value: 4 },
+    });
+    fireEvent.change(screen.getByLabelText(/occasion/i), {
+      target: { value: "Birthday" },
+    });
+
+    const submitButton = screen.getByRole("button", {
+      name: /make your reservation/i,
+    });
+    expect(submitButton).not.toBeDisabled();
+  });
+
+  test("has correct HTML5 validation attributes", () => {
+    render(
+      <BookingForm
+        date=""
+        setDate={mockSetDate}
+        time=""
+        setTime={mockSetTime}
+        guests={1}
+        setGuests={mockSetGuests}
+        occasion=""
+        setOccasion={mockSetOccasion}
+        availableTimes={["17:00", "18:00", "19:00"]}
+        dispatchAvailableTimes={() => {}}
+      />
+    );
+
+    const guestsInput = screen.getByLabelText(/number of guests/i);
+    expect(guestsInput).toHaveAttribute("type", "number");
+    expect(guestsInput).toHaveAttribute("min", "1");
+    expect(guestsInput).toHaveAttribute("max", "10");
+    expect(guestsInput).toBeRequired();
+
+    // Add similar checks for other input fields if they have HTML5 validation
+  });
+
+  test("disables submit button when form is invalid", () => {
+    render(
+      <BookingForm
+        date=""
+        setDate={mockSetDate}
+        time=""
+        setTime={mockSetTime}
+        guests={1}
+        setGuests={mockSetGuests}
+        occasion=""
+        setOccasion={mockSetOccasion}
+        availableTimes={["17:00", "18:00", "19:00"]}
+        dispatchAvailableTimes={() => {}}
+      />
+    );
+
+    // Simulate invalid or incomplete inputs
+    // Example: Not setting a date
+    fireEvent.change(screen.getByLabelText(/choose time/i), {
+      target: { value: "18:00" },
+    });
+    fireEvent.change(screen.getByLabelText(/number of guests/i), {
+      target: { value: 4 },
+    });
+    fireEvent.change(screen.getByLabelText(/occasion/i), {
+      target: { value: "Birthday" },
+    });
+
+    const submitButton = screen.getByRole("button", {
+      name: /make your reservation/i,
+    });
+    expect(submitButton).toBeDisabled();
   });
 });
