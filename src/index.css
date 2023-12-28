@@ -482,6 +482,10 @@ div {
   align-self: stretch;
 }
 
+a {
+  color: var(--dark, #191e1c);
+}
+
 .footer {
   display: flex;
   height: 400px;
