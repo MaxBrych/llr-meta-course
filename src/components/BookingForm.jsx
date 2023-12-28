@@ -92,7 +92,7 @@ export default function BookingForm({
         <h2>Make a reservation</h2>
         <Box
           as="form"
-          style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
+          style={{ display: "grid", maxWidth: "640px", gap: "20px" }}
           color={"black"}
           borderColor={"black"}
           onSubmit={handleSubmit}

@@ -491,6 +491,7 @@ div {
   gap: 32px;
   align-self: stretch;
   background: var(--green, #495e57);
+  color: #ffffff;
 }
 
 .footer-wrapper {

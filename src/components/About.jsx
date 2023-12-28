@@ -23,10 +23,12 @@ export default function About() {
       <div class="col-left">
         <h2>About</h2>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum.{" "}
+          Established in 2021, Little Lemon Restaurant quickly became a culinary
+          hotspot in Chicago. The brainchild of Chef Emily Robinson, who found
+          inspiration in the versatile flavors of lemons, the restaurant aims to
+          provide a dining experience that excites the palate. The establishment
+          prides itself on using fresh, locally-sourced ingredients, ensuring
+          every dish is as nutritious as it is delicious.
         </p>
       </div>
     </Flex>
