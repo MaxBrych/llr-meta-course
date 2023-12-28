@@ -79,6 +79,9 @@ export default function BookingForm({
         >
           <CheckCircle size={64} color="#495e57" />
           <h2>Successfully reserved a table</h2>
+          <Link class="link" to="/">
+            Finish
+          </Link>
         </Flex>
 
         <div className="booking-col"></div>
