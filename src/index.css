@@ -17,8 +17,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f5f5f5;
-  height: 3rem;
+  background-color: #fff;
+  border-bottom: 1px solid #f5f5f5;
+  height: 5rem;
+  color: var(--dark, #191e1c);
 }
 
 h1 {
@@ -137,10 +139,12 @@ a {
 img {
   flex: 1 0 0;
   align-self: stretch;
-  border-radius: 16px;
-  border-radius: 16px;
-  background: url("https://s3-alpha-sig.figma.com/img/a3b3/795e/d1961ad48a75d083b28599231e23d04f?Expires=1704672000&Signature=Fgdst8ZNDx6M~lvnWIWGx5-zq5MLSc26XQjo9uJ1lSM5y1GOIs~GJpzAUGVcvqoib3nMd5VE2I2-ZfEjQpXxaE6bjlFPUDKGxfcf1jvG2aiefpIKJ7vO~jA3i1GcmQpqQHEinMCNjBB0Zu~PW7prm3usIa37AWni3BpdDu6iXK6E~fV4cQizW7-iHv15H~Jlok2ZpbWtiU0YP7WeKVWkhIGFI7Wo57Y5-LGvL2jbetB7SwrMRfSRt5y0aZKNbsqiNTjkbnQZ~ebLd6~laUsT0qIRlD6UulZiR2Iw3qgettgyNXiaqguDglyk8PpV01sucbQmqsN~gVAFVUEpVzg1Cw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"),
-    lightgray 50% / cover no-repeat;
+  border-radius: 24px;
+  border-radius: 24px;
+  background: url("https://cdn.discordapp.com/attachments/911669935363752026/1189992875044388984/unsplash_Orz90t6o0e4.jpg?ex=65a02e3a&is=658db93a&hm=038d7733563e5e920cc72838a475e806296ad01c11a549d89db326a61172fecb&");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .wrapper {
@@ -169,6 +173,7 @@ img {
   font-style: normal;
   font-weight: 800;
   line-height: normal;
+  color: var(--dark, #191e1c);
 }
 
 .button-secundary {
@@ -177,6 +182,7 @@ img {
   align-items: center;
   gap: 8px;
   align-self: stretch;
+  color: var(--dark, #191e1c);
 }
 
 .col {
@@ -199,6 +205,13 @@ img {
   align-self: stretch;
 }
 
+.about-img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .booking-col {
   display: flex;
   padding: 32px 0px;
@@ -208,6 +221,10 @@ img {
   flex: 2 0 0;
   align-self: stretch;
   background: var(--gray, #edefee);
+  background-image: url("https://cdn.discordapp.com/attachments/911669935363752026/1189944774929694810/unsplash_poI7DelFiVA.jpg?ex=65a0016e&is=658d8c6e&hm=7115f35c5c45018d4f882efa6a80f71448260153ff4abe012d517cc5271435c3&");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .links {
@@ -254,6 +271,8 @@ img {
   .about {
     flex-direction: column;
     padding: 0px 16px; /* Optional: Adjust padding for mobile */
+    background-color: #ffffff;
+    height: 720px;
   }
 
   .testimonials {
@@ -266,7 +285,6 @@ img {
   }
 
   .highlights {
-    height: auto;
     padding: 16px;
   }
 
@@ -277,7 +295,6 @@ img {
 
 .highlights {
   display: flex;
-  height: 720px;
   padding: 64px;
   flex-direction: column;
   align-items: flex-start;
@@ -340,7 +357,7 @@ img {
 }
 
 .highlight-image {
-  height: 280px;
+  height: 240px;
   align-self: stretch;
 }
 

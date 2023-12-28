@@ -105,8 +105,8 @@ export default function Booking() {
         availableTimes={availableTimes}
         dispatchAvailableTimes={dispatchAvailableTimes}
       />
-
-      <BookingDataTable bookingData={bookingData} />
+      {/**
+      <BookingDataTable bookingData={bookingData} /> */}
     </>
   );
 }

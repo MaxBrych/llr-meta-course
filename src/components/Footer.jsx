@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
-    <Box class="footer">
+    <div class="footer">
       <div class="footer-wrapper">
         <div class="footer-col">
           {" "}
@@ -38,6 +38,6 @@ export default function Footer() {
           <a href="">idk</a>
         </div>
       </div>
-    </Box>
+    </div>
   );
 }

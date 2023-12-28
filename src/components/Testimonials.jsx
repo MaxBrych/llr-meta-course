@@ -1,4 +1,6 @@
 import React from "react";
+import { Star, StarHalf } from "lucide-react";
+import { Flex, Spacer } from "@chakra-ui/react";
 
 const testimonials = [
   {
@@ -34,7 +36,11 @@ export default function Testimonials() {
       <div class="testimonial-grid">
         {testimonials.map((testimonial) => (
           <div class="testimonial">
-            <div>stars</div>
+            <Flex>
+              {Array.from({ length: 5 }, () => (
+                <Star fill="orange" strokeWidth={0} />
+              ))}
+            </Flex>
             <div class="testimonial-quote">{testimonial.quote}</div>
             <div className="flex">
               <img class="testimonial-image" src={testimonial.image} />

@@ -5,7 +5,7 @@ import { Box } from "@chakra-ui/react";
 
 export default function NavBar() {
   return (
-    <Box>
+    <nav>
       <Link to="/">
         <LogoDark />
       </Link>
@@ -16,10 +16,7 @@ export default function NavBar() {
         <Link class="link" to="/Booking">
           Booking
         </Link>
-        <Link class="link" to="/Specials">
-          Specials
-        </Link>
       </nav>
-    </Box>
+    </nav>
   );
 }
