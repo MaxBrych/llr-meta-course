@@ -33,7 +33,11 @@ export default function BookingForm({
   occasion,
   setOccasion,
   availableTimes,
+  name,
+  setName,
   dispatchAvailableTimes,
+
+  handleSubmit,
 }) {
   // Event handlers for form field changes
   const handleDateChange = (event) => {
@@ -46,6 +50,10 @@ export default function BookingForm({
   };
   const handleOccasionChange = (event) => setOccasion(event.target.value);
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const toast = useToast();
@@ -54,10 +62,12 @@ export default function BookingForm({
     setIsFormValid(date && time && guests > 0 && occasion);
   }, [date, time, guests, occasion]);
 
-  const handleSubmit = (event) => {
+  const localHandleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid) {
-      setIsSubmitted(true);
+      const formData = { name, date, time, guests, occasion };
+      handleSubmit(formData); // Pass formData to the parent component's handleSubmit
+      setIsSubmitted(true); // Set isSubmitted to true
     } else {
       toast({
         title: "Missing information.",
@@ -100,9 +110,25 @@ export default function BookingForm({
           style={{ display: "grid", maxWidth: "640px", gap: "20px" }}
           color={"black"}
           borderColor={"black"}
-          onSubmit={handleSubmit}
+          onSubmit={localHandleSubmit}
           width="100%"
         >
+          <FormControl id="res-name" width="100%">
+            <FormLabel>Your Name</FormLabel>
+            <Input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              width="100%"
+              borderColor="gray.300"
+              _hover={{ borderColor: "gray.400" }}
+              _focus={{ borderColor: "gray.500" }}
+              _active={{ borderColor: "gray.500" }}
+              color={"gray.500"}
+              textColor={"gray.500"}
+              colorScheme="gray"
+            />
+          </FormControl>
           <FormControl id="res-date" width="100%">
             <FormLabel>Choose date</FormLabel>
 
@@ -184,6 +210,7 @@ export default function BookingForm({
             colorScheme="yellow"
             type="submit"
             disabled={!isFormValid}
+            onSubmit={localHandleSubmit}
           >
             Submit
           </Button>

@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 import BookingForm from "../components/BookingForm";
 import BookingDataTable from "../components/BookingDataTable";
+import { useNavigate } from "react-router-dom";
 
 const timesReducer = (state, action) => {
   switch (action.type) {
@@ -18,8 +19,10 @@ export default function Booking() {
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
+  const [name, setName] = useState("");
 
   const [bookingData, setBookingData] = useState([]);
+  const navigate = useNavigate();
 
   const [availableTimes, dispatchAvailableTimes] = useReducer(timesReducer, []);
 
@@ -76,16 +79,14 @@ export default function Booking() {
     });
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Assuming you collect the booking info into an object
-    const newBooking = {
-      date,
-      time,
-      guests,
-      occasion,
-    };
-    setBookingData([...bookingData, newBooking]);
+  const handleSubmit = (formData) => {
+    // Update to use a function to get the most recent state
+    setBookingData((prevData) => {
+      const newData = [...prevData, formData];
+      localStorage.setItem("bookingData", JSON.stringify(newData));
+      return newData;
+    });
+    navigate("/success");
   };
 
   return (
@@ -94,6 +95,8 @@ export default function Booking() {
 
       <BookingForm
         handleSubmit={handleSubmit}
+        name={name}
+        setName={setName}
         date={date}
         setDate={setDate}
         time={time}
@@ -105,8 +108,6 @@ export default function Booking() {
         availableTimes={availableTimes}
         dispatchAvailableTimes={dispatchAvailableTimes}
       />
-      {/**
-      <BookingDataTable bookingData={bookingData} /> */}
     </>
   );
 }

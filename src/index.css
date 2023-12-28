@@ -284,8 +284,15 @@ img {
     padding: 0px 16px;
   }
 
-  .highlights {
+  .highlights,
+  .testimonials {
+    height: auto;
     padding: 16px;
+  }
+
+  .highlight,
+  .testimonial {
+    height: auto;
   }
 
   .highlight-grid {
