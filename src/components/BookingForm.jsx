@@ -58,48 +58,64 @@ export default function BookingForm({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const toast = useToast();
 
+  const [nameError, setNameError] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [timeError, setTimeError] = useState("");
+  const [guestsError, setGuestsError] = useState("");
+  const [occasionError, setOccasionError] = useState("");
+
   useEffect(() => {
-    setIsFormValid(date && time && guests > 0 && occasion);
-  }, [date, time, guests, occasion]);
+    setIsFormValid(name && date && time && guests > 0 && occasion);
+  }, [name, date, time, guests, occasion]);
+
+  const validateForm = () => {
+    let isValid = true;
+    if (!name) {
+      setNameError("Information is required.");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
+
+    if (!date) {
+      setDateError("Information is required.");
+      isValid = false;
+    } else {
+      setDateError("");
+    }
+
+    if (!time) {
+      setDateError("Information is required.");
+      isValid = false;
+    } else {
+      setTimeError("");
+    }
+
+    if (!guests) {
+      setDateError("Information is required.");
+      isValid = false;
+    } else {
+      setGuestsError("");
+    }
+
+    if (!occasion) {
+      setDateError("Information is required.");
+      isValid = false;
+    } else {
+      setOccasionError("");
+    }
+
+    return isValid;
+  };
 
   const localHandleSubmit = (event) => {
     event.preventDefault();
-    if (isFormValid) {
+    if (validateForm()) {
       const formData = { name, date, time, guests, occasion };
-      handleSubmit(formData); // Pass formData to the parent component's handleSubmit
-      setIsSubmitted(true); // Set isSubmitted to true
-    } else {
-      toast({
-        title: "Missing information.",
-        description: "Please fill all required fields.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
+      handleSubmit(formData);
+      setIsSubmitted(true);
     }
   };
-
-  if (isSubmitted) {
-    return (
-      <Flex h={"800px"} bg={"white"}>
-        <Flex
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          textAlign="center"
-          gap={8}
-        >
-          <CheckCircle size={64} color="#495e57" />
-          <h2>Successfully reserved a table</h2>
-          <Link class="button" to="/">
-            Finish
-          </Link>
-        </Flex>
-
-        <div className="booking-col"></div>
-      </Flex>
-    );
-  }
 
   return (
     <Flex h={"800px"} bg={"white"} flexDirection={["column", "column", "row"]}>
@@ -113,7 +129,7 @@ export default function BookingForm({
           onSubmit={localHandleSubmit}
           width="100%"
         >
-          <FormControl id="res-name" width="100%">
+          <FormControl id="res-name" width="100%" isInvalid={!!nameError}>
             <FormLabel>Your Name</FormLabel>
             <Input
               type="text"
@@ -128,8 +144,9 @@ export default function BookingForm({
               textColor={"gray.500"}
               colorScheme="gray"
             />
+            {nameError && <FormErrorMessage>{nameError}</FormErrorMessage>}
           </FormControl>
-          <FormControl id="res-date" width="100%">
+          <FormControl id="res-date" width="100%" isInvalid={!!dateError}>
             <FormLabel>Choose date</FormLabel>
 
             <Input
@@ -145,6 +162,7 @@ export default function BookingForm({
               value={date}
               onChange={handleDateChange}
             />
+            {dateError && <FormErrorMessage>{dateError}</FormErrorMessage>}
           </FormControl>
 
           <FormControl id="res-time">
@@ -168,6 +186,7 @@ export default function BookingForm({
                 <option disabled>Loading times...</option>
               )}
             </Select>
+            {timeError && <FormErrorMessage>{timeError}</FormErrorMessage>}
           </FormControl>
 
           <FormControl id="guests">
@@ -187,6 +206,7 @@ export default function BookingForm({
                 _focus={{ borderColor: "gray.500" }}
               />
             </NumberInput>
+            {guestsError && <FormErrorMessage>{guestsError}</FormErrorMessage>}
           </FormControl>
 
           <FormControl id="occasion">
@@ -201,6 +221,9 @@ export default function BookingForm({
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
             </Select>
+            {occasionError && (
+              <FormErrorMessage>{occasionError}</FormErrorMessage>
+            )}
           </FormControl>
 
           <Button
