@@ -5,7 +5,8 @@ import { Box, VStack, HStack, Text, Divider } from "@chakra-ui/react";
 const BookingDataTable = ({ bookingData }) => {
   return (
     <VStack
-      border="1px solid gray"
+      border="1px solid"
+      borderColor="gray.300"
       borderRadius="lg"
       p={4}
       alignItems="start"
@@ -22,8 +23,9 @@ const BookingDataTable = ({ bookingData }) => {
             key={index}
             w="full"
             p={3}
-            border="1px solid gray"
+            border="1px solid"
             borderRadius="md"
+            borderColor="gray.300"
             bg="gray.50"
           >
             <VStack spacing={2}>

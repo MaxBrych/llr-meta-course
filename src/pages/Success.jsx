@@ -14,7 +14,8 @@ const Success = () => {
       alignItems="center"
       h="800px"
       bg="white"
-      gap="8"
+      gap="12"
+      p="4"
     >
       <VStack spacing={4} textAlign="center">
         <CheckCircle size={64} color="#495e57" />
