@@ -1,4 +1,3 @@
-// components/BookingDataTable.jsx
 import React from "react";
 
 const BookingDataTable = ({ bookingData }) => {

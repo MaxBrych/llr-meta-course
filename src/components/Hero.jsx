@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 
 export default function Hero() {
   return (
-    <div class="hero">
+    <Flex>
       <div class="col">
         <h1>Little Lemon</h1>
         <div class="wrapper">
@@ -14,9 +16,9 @@ export default function Hero() {
             et ea rebum.{" "}
           </p>
         </div>
-        <a class="button" href="" role="button">
+        <Link role="button" class="button" to="/Booking">
           Reserve a table
-        </a>
+        </Link>
       </div>
       <div class="col-right">
         <img
@@ -25,6 +27,6 @@ export default function Hero() {
           class="hero-image"
         />
       </div>
-    </div>
+    </Flex>
   );
 }

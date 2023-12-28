@@ -1,10 +1,11 @@
 import React from "react";
 import LogoDark from "./lib/LogoDark";
 import { Link } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 
 export default function NavBar() {
   return (
-    <nav>
+    <Box>
       <Link to="/">
         <LogoDark />
       </Link>
@@ -19,6 +20,6 @@ export default function NavBar() {
           Specials
         </Link>
       </nav>
-    </nav>
+    </Box>
   );
 }

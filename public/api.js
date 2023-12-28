@@ -7,6 +7,8 @@ function fetchAPI(date) {
   // Mock data: an array of times
   const times = ["12:00", "13:00", "14:00", "18:00", "19:00", "20:00"];
 
+  console.log("fetchAPI called with date:", date);
+
   // Return a promise that resolves with the times
   return new Promise((resolve) => {
     setTimeout(() => resolve(times), 1000); // Simulate network delay

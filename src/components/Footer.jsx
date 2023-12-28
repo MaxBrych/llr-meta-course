@@ -1,9 +1,10 @@
 import React from "react";
 import Logo from "./lib/LogoLight";
+import { Box } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
-    <div class="footer">
+    <Box class="footer">
       <div class="footer-wrapper">
         <div class="footer-col">
           {" "}
@@ -37,6 +38,6 @@ export default function Footer() {
           <a href="">idk</a>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }

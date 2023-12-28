@@ -3,6 +3,17 @@ import { useState, useEffect } from "react";
 import "@material/web/button/filled-button.js";
 import "@material/web/checkbox/checkbox.js";
 import "@material/web/field/outlined-field.js";
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Button,
+  NumberInput,
+  NumberInputField,
+} from "@chakra-ui/react";
 
 export default function BookingForm({
   date,
@@ -29,63 +40,67 @@ export default function BookingForm({
 
   useEffect(() => {
     const isValid = date && time && guests > 0 && occasion;
+    console.log({ date, time, guests, occasion, isValid });
     setIsFormValid(isValid);
   }, [date, time, guests, occasion]);
 
   return (
     <>
-      <div className="about">
+      <Flex>
         <div className="col-left">
           <h2>Make a reservation</h2>
-          <form style={{ display: "grid", maxWidth: "200px", gap: "20px" }}>
-            <label htmlFor="res-date">Choose date</label>
-            <input
-              type="date"
-              id="res-date"
-              value={date}
-              onChange={handleDateChange}
-            />
+          <Box
+            as="form"
+            style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
+          >
+            <FormControl id="res-date">
+              <FormLabel>Choose date</FormLabel>
+              <Input type="date" value={date} onChange={handleDateChange} />
+            </FormControl>
 
-            <label htmlFor="res-time">Choose time</label>
-            <select id="res-time" value={time} onChange={handleTimeChange}>
-              {Array.isArray(availableTimes) &&
-                availableTimes.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                ))}
-            </select>
+            <FormControl id="res-time">
+              <FormLabel>Choose time</FormLabel>
+              <Select value={time} onChange={handleTimeChange}>
+                {Array.isArray(availableTimes) && availableTimes.length > 0 ? (
+                  availableTimes.map((timeOption) => (
+                    <option key={timeOption} value={timeOption}>
+                      {timeOption}
+                    </option>
+                  ))
+                ) : (
+                  <option disabled>Loading times...</option>
+                )}
+              </Select>
+            </FormControl>
 
-            <label htmlFor="guests">Number of guests</label>
-            <md-outlined-text-field
-              type="number"
-              placeholder="1"
-              min="1"
-              max="10"
-              id="guests"
-              value={guests}
-              onChange={handleGuestsChange}
-              required
-            />
+            <FormControl id="guests">
+              <FormLabel>Number of guests</FormLabel>
+              <NumberInput
+                min={1}
+                max={10}
+                value={guests}
+                onChange={(valueString) => setGuests(parseInt(valueString))}
+              >
+                <NumberInputField />
+              </NumberInput>
+            </FormControl>
 
-            <label htmlFor="occasion">Occasion</label>
-            <select
-              id="occasion"
-              value={occasion}
-              onChange={handleOccasionChange}
-            >
-              <option value="">Select an occasion</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Anniversary">Anniversary</option>
-            </select>
+            <FormControl id="occasion">
+              <FormLabel>Occasion</FormLabel>
+              <Select value={occasion} onChange={handleOccasionChange}>
+                <option value="">Select an occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+              </Select>
+            </FormControl>
 
-            <input type="submit" disabled={!isFormValid}>
-              Next
-            </input>
-          </form>
+            <Button type="submit" disabled={!isFormValid} colorScheme="blue">
+              Submit
+            </Button>
+          </Box>
         </div>
         <div className="booking-col">Restaurant select</div>
-      </div>
+      </Flex>
     </>
   );
 }

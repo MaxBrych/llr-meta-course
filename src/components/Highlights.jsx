@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 
 const highlights = [
   {
@@ -26,12 +28,12 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <div class="highlights">
+    <Box>
       <div col="hightlight-heading ">
         <h2>Specials</h2>
-        <a class="button" href="">
-          Reserve a table
-        </a>
+        <Link role="button" class="button" to="/Booking">
+          Our Menu{" "}
+        </Link>
       </div>
       <div class="highlight-grid">
         {highlights.map((highlight) => (
@@ -55,6 +57,6 @@ export default function Highlights() {
           </div>
         ))}
       </div>
-    </div>
+    </Box>
   );
 }

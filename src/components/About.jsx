@@ -1,8 +1,9 @@
 import React from "react";
+import { Flex } from "@chakra-ui/react";
 
 export default function About() {
   return (
-    <div class="about">
+    <Flex>
       <div class="col-left">
         <h2>About</h2>
         <p>
@@ -15,6 +16,6 @@ export default function About() {
       <div class="col-right">
         <img src="" alt="" />
       </div>
-    </div>
+    </Flex>
   );
 }
