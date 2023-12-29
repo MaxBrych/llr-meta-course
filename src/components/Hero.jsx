@@ -7,7 +7,8 @@ export default function Hero() {
     <Flex
       bg={"#495e57"}
       h="720"
-      p={8}
+      p={["4", "8", "8"]}
+      py={8}
       gap={8}
       class="hero"
       flexDirection={["column", "column", "row"]}

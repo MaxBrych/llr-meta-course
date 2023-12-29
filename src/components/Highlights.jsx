@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { ArrowRight } from "lucide-react";
 
 const highlights = [
@@ -35,7 +35,16 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <Box bg={"white"} h="720" className="highlights">
+    <Flex
+      flexDirection="column"
+      gap="8"
+      bg={"white"}
+      h={["auto", "720", "720"]}
+      p={["4", "8", "8"]}
+      py={8}
+      justifyContent="center"
+      alignItems="center"
+    >
       <Flex justifyContent="space-between" col="hightlight-heading ">
         <h2>Specials</h2>
         <Link role="button" class="button" to="/Booking">
@@ -45,11 +54,16 @@ export default function Highlights() {
       <div class="highlight-grid">
         {highlights.map((highlight) => (
           <div class="hightlight">
-            <img
-              src={highlight.image}
-              alt={highlight.title}
-              class="highlight-image"
-            />
+            <Box w="full">
+              <Image
+                w="full"
+                h={["200", "240", "240"]}
+                rounded={16}
+                src={highlight.image}
+                alt={highlight.title}
+                class="highlight-image"
+              />
+            </Box>
 
             <div class="highlight-text">
               <div class="title-price">
@@ -68,6 +82,6 @@ export default function Highlights() {
           </div>
         ))}
       </div>
-    </Box>
+    </Flex>
   );
 }

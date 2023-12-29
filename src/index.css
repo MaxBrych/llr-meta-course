@@ -281,7 +281,6 @@ img {
 
   .testimonial-grid {
     flex-direction: column;
-    padding: 0px 16px;
   }
 
   .highlights,
@@ -297,6 +296,14 @@ img {
 
   .highlight-grid {
     flex-direction: column;
+  }
+
+  img {
+    height: 480px;
+  }
+
+  .col-right {
+    height: 480px;
   }
 }
 
@@ -365,7 +372,6 @@ img {
 
 .highlight-image {
   height: 240px;
-  align-self: stretch;
 }
 
 .row {
@@ -401,6 +407,7 @@ div {
 .testimonial {
   display: flex;
   padding: 32px;
+  gap: 24px;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;

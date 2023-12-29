@@ -4,9 +4,10 @@ import { Flex } from "@chakra-ui/react";
 export default function About() {
   return (
     <Flex
-      h="720"
-      gap={8}
-      p={8}
+      h={["auto", "720", "720"]}
+      gap={[4, 8, 8]}
+      p={["4", "8", "8"]}
+      py={8}
       bg={"white"}
       class="about"
       flexDirection={["column", "column", "row"]}

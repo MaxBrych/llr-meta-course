@@ -31,7 +31,16 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div class="testimonials">
+    <Flex
+      flexDirection="column"
+      gap="8"
+      h={["auto", "560", "560"]}
+      p={["4", "8", "8"]}
+      py={8}
+      justifyContent="center"
+      alignItems="center"
+      bg={"#f5f5f5"}
+    >
       <h2>Testimonials</h2>
       <div class="testimonial-grid">
         {testimonials.map((testimonial) => (
@@ -52,6 +61,6 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
-    </div>
+    </Flex>
   );
 }
