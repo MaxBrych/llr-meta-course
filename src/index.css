@@ -502,7 +502,7 @@ a {
 
 .footer {
   display: flex;
-  height: 400px;
+  height: 240px;
   padding: 64px;
   flex-direction: column;
   align-items: flex-start;
@@ -523,7 +523,7 @@ a {
 .footer-col {
   display: flex;
   width: 320px;
-  height: 238px;
+  height: auto;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
