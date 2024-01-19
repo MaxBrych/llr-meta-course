@@ -8,12 +8,12 @@ import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <Hero />
       <Highlights />
       <Testimonials />
       <About />
       <Footer />
-    </>
+    </div>
   );
 }
